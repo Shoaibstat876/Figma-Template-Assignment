@@ -7,13 +7,12 @@ import { TbMoneybag } from "react-icons/tb";
 
 // Define types for the StatisticCard props
 interface StatisticCardProps {
-  icon: React.ReactNode;  // For any JSX element passed as the icon
-  count: string;          // Since the count is a string in your usage
-  label: string;          // The label for the statistic card
-  bgColor?: string;       // Optional background color property
+  icon: React.ReactNode;
+  count: string;
+  label: string;
+  bgColor?: string;
 }
 
-// StatisticCard Component
 const StatisticCard: React.FC<StatisticCardProps> = ({ icon, count, label, bgColor = "bg-white" }) => {
   return (
     <div className={`border-2 rounded-[4px] space-y-3 ${bgColor} border-[#d6d5d5f5] w-[230px] h-[200px]`}>
@@ -26,6 +25,7 @@ const StatisticCard: React.FC<StatisticCardProps> = ({ icon, count, label, bgCol
   );
 };
 
+// AboutPage Component (Main Default Export)
 const AboutPage = () => {
   return (
     <div className='max-w-[1440px] w-full'>
@@ -33,7 +33,7 @@ const AboutPage = () => {
       <div className='ml-[150px] pt-[70px]'>
         <ul className='flex gap-2 w-[114px] h-[24px]'>
           <li className='w-[42px] h-[21px] font-poppins font-normal text-[14px] opacity-[50%]'>Home</li>
-          <p>/</p>
+          <span>/</span>
           <li className='w-[42px] h-[21px] font-poppins font-normal text-[14px]'>About</li>
         </ul>
       </div>
@@ -68,44 +68,34 @@ const AboutPage = () => {
       </div>
 
       {/* Statistics Section */}
-      <AboutStatistics />
+      <div className='ml-[150px]'>
+        <div className='w-[1050px] flex h-[230px] mt-6 gap-[30px]'>
+          {/* Statistic Cards */}
+          <StatisticCard
+            icon={<SiHomeassistantcommunitystore size="28px" />}
+            count="10.5k"
+            label="Sellers active on our site"
+          />
+          <StatisticCard
+            icon={<AiOutlineDollarCircle size="28px" />}
+            count="33k"
+            label="Monthly Product Sales"
+            bgColor="bg-[#DB4444]"
+          />
+          <StatisticCard
+            icon={<IoBagHandle size="28px" />}
+            count="10.5k"
+            label="Products Sold"
+          />
+          <StatisticCard
+            icon={<TbMoneybag size="28px" />}
+            count="10.5k"
+            label="Happy Customers"
+          />
+        </div>
+      </div>
     </div>
   );
 };
 
 export default AboutPage;
-
-// Statistics Section Component
-const AboutStatistics = () => {
-  return (
-    <div className='ml-[150px]'>
-      <div className='w-[1050px] flex h-[230px] mt-6 gap-[30px]'>
-        {/* Statistic Card 1 */}
-        <StatisticCard
-          icon={<SiHomeassistantcommunitystore size="28px" className='text-[#000000]' />}
-          count="10.5k"
-          label="Sellers active on our site"
-        />
-        {/* Statistic Card 2 */}
-        <StatisticCard
-          icon={<AiOutlineDollarCircle size="28px" className='text-[#000000]' />}
-          count="33k"
-          label="Monthly Product Sales"
-          bgColor="bg-[#DB4444]"
-        />
-        {/* Statistic Card 3 */}
-        <StatisticCard
-          icon={<IoBagHandle size="28px" className='text-[#000000]' />}
-          count="10.5k"
-          label="Products Sold"
-        />
-        {/* Statistic Card 4 */}
-        <StatisticCard
-          icon={<TbMoneybag size="28px" className='text-[#000000]' />}
-          count="10.5k"
-          label="Happy Customers"
-        />
-      </div>
-    </div>
-  );
-};
